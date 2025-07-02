@@ -14,7 +14,7 @@ module "vpc" {
 }
 module "sg"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/sg?ref=master"
-  vpc_id = module.vpc.vpc-output
+  vpc_id = module.vpc.vpc_id
   block1 = var.block1
   block2 = var.block2
   block3 = var.block3

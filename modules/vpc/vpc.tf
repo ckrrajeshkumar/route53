@@ -46,12 +46,3 @@ resource "aws_route_table_association" "babaji-rta1"{
   route_table_id = aws_route_table.babaji-rt.id
   subnet_id = aws_subnet.babaji-pub2.id
 }
-output "vpc-output"{
-  value =  aws_vpc.babaji-vpc.id
-}
-output "subnet" {
-  value = aws_subnet.babaji-pub1.id
-}
-output "subnet1" {
-  value = aws_subnet.babaji-pub2.id
-}
