@@ -1,5 +1,6 @@
 resource "aws_instance" "babaji-web"{
   ami = var.amiid
+  key_name = var.keypair
   instance_type = var.intype
   count = length(var.pubcidr)
   subnet_id = element(aws_subnet.babaji-pub.*.id , count.index)

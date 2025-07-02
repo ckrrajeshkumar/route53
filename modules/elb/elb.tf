@@ -1,6 +1,6 @@
 resource "aws_elb" "babaji-elb" {
-  security_groups = [aws_security_group.babaji-sg.id]
-  subnets = [aws_subnet.babaji-pub.*.id]
+  security_groups = [var.sg_id]
+  subnets = var.subnet_ids
   listener {
     instance_port     = "80"
     instance_protocol = "http"
@@ -14,7 +14,7 @@ resource "aws_elb" "babaji-elb" {
     timeout             = 3
     unhealthy_threshold = 2
   }
-  instances = [aws_instance.babaji-web[0].id, aws_instance.babaji-web[1].id]
+  instances = var.instance_ids
   cross_zone_load_balancing   = true
   idle_timeout                = 100
   connection_draining         = true
