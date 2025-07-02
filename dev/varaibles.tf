@@ -23,7 +23,6 @@ variable "elbname"{}
 variable "sg_id"{}
 variable "subnet2_id"{}
 variable "subnet1_id"{}
-variable "instance_ids"{}
 variable "domainname"{}
 variable "elb_zone_id"{}
 variable "vpc_id"{}
