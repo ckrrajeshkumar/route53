@@ -1,0 +1,21 @@
+# Terraform state and cache files
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfplan
+
+# Environment-specific var files
+*.tfvars
+
+# SSH keys or certs
+*.pem
+*.key
+*.crt
+
+# Logs, system, and temp files
+*.log
+*.bak
+*.old
+.DS_Store
+Thumbs.db
