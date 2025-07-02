@@ -4,14 +4,22 @@ resource "aws_vpc" "babaji-vpc"{
     Name = var.vpcname
   }
 }
-resource "aws_subnet" "babaji-pub"{
+resource "aws_subnet" "babaji-pub1"{
   vpc_id = aws_vpc.babaji-vpc.id
-  count = length(var.pubcidr)
-  cidr_block = element(var.pubcidr,count.index)
-  availability_zone = element(var.az,count.index)
+  cidr_block = var.pubcidr1
+  availability_zone = var.pubaz1
   map_public_ip_on_launch = true
   tags={
-    Name = "subnet-${count.index + 1}"
+    Name = var.pubsubname1
+  }
+}
+resource "aws_subnet" "babaji-pub2"{
+  vpc_id = aws_vpc.babaji-vpc.id
+  cidr_block = var.pubcidr2
+  availability_zone = var.pubaz2
+  map_public_ip_on_launch = true
+  tags={
+    Name = var.pubsubname2
   }
 }
 resource "aws_internet_gateway" "babaji-igw"{
@@ -32,12 +40,18 @@ resource "aws_route_table" "babaji-rt"{
 }
 resource "aws_route_table_association" "babaji-rta"{
   route_table_id = aws_route_table.babaji-rt.id
-  count = length(var.pubcidr)
-  subnet_id = element(aws_subnet.babaji-pub.*.id, count.index)
+  subnet_id = aws_subnet.babaji-pub1.id
+}
+resource "aws_route_table_association" "babaji-rta1"{
+  route_table_id = aws_route_table.babaji-rt.id
+  subnet_id = aws_subnet.babaji-pub2.id
 }
 output "vpc-output"{
   value =  aws_vpc.babaji-vpc.id
 }
 output "subnet" {
-  value =aws_subnet.babaji-pub.*.id
+  value = aws_subnet.babaji-pub1.id
+}
+output "subnet1" {
+  value = aws_subnet.babaji-pub2.id
 }

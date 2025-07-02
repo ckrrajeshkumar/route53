@@ -1,11 +1,14 @@
 variable "vpccidr"{}
 variable "vpcname"{}
-variable "pubcidr"{
-  type = list(any)
+variable "pubcidr1"{
 }
-variable "az"{
-  type = list(any)
+variable "pubaz1"{
+
 }
+variable "pubsubname1"{}
+variable "pubsubname2"{}
+variable "pubcidr2"{}
+variable "pubaz2"{}
 variable "igwname"{}
 variable "igwcidr"{}
 variable "rtname"{}
@@ -22,6 +25,8 @@ variable "subnet_ids"{}
 variable "instance_ids"{}
 variable "domainname"{}
 variable "elb_zone_id"{}
+variable "vpc_id"{}
+
 
 
 

@@ -1,5 +1,5 @@
 resource "aws_security_group" "babaji-sg"{
-  vpc_id = aws_vpc.babaji-vpc.id
+  vpc_id = var.vpc_id
   ingress{
     description = "ALLOW SSH"
     from_port = "22"

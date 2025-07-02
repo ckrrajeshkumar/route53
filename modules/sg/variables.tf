@@ -8,3 +8,4 @@ variable "block3"{
   type = list(any)
 }
 variable "sgname"{}
+variable "vpc_id"{}

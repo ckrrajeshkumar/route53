@@ -1,6 +1,6 @@
 resource "aws_elb" "babaji-elb" {
-  security_groups = [var.sg_id]
-  subnets = var.subnet_ids
+  vpc_security_group_ids = [var.security_group_id]
+  subnets = var.subnet_id
   listener {
     instance_port     = "80"
     instance_protocol = "http"
