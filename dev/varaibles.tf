@@ -20,13 +20,10 @@ variable "amiid"{}
 variable "keypair"{}
 variable "intype"{}
 variable "elbname"{}
-variable "sg_id"{}
-variable "subnet2_id"{}
-variable "subnet1_id"{}
 variable "domainname"{}
 variable "elb_zone_id"{}
-variable "vpc_id"{}
-
+variable "ec2name1"{}
+variable "ec2name2"{}
 
 
 

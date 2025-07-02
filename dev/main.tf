@@ -26,8 +26,10 @@ module "ec2"{
   intype = var.intype
   security_group_id = module.sg.sg_id
   keypair = var.keypair
-  subnet1_id = var.subnet1_id
-  subnet2_id = var.subnet2_id
+  subnet_id1 = module.vpc.subnet1_id
+  subnet_id2 = module.vpc.subnet2.id
+  ec2name1 = var.ec2name1
+  ec2name2 = var.ec2name2
 }
 module "elb"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/elb?ref=master"
