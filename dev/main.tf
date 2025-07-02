@@ -34,6 +34,6 @@ module "elb"{
 module "r53"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/r53?ref=master"
   domainname =var.domainname
-  elb_dns = module.elb.elb_dnsname
+  elb_dns = module.elb.dns_name
   elb_zone_id = var.elb_zone_id
 }
