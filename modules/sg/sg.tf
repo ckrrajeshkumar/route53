@@ -25,6 +25,3 @@ resource "aws_security_group" "babaji-sg"{
     Name = var.sgname
   }
 }
-output "sg"{
-  value = aws_security_group.babaji-sg.id
-}

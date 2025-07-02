@@ -5,14 +5,14 @@ module "vpc" {
   pubcidr1 = var.pubcidr1
   pubaz1 = var.pubaz1
   pubcidr2 = var.pubcidr2
-  pubaz2 = var.pubcidr2
+  pubaz2 = var.pubaz2
   pubsubname1 = var.pubsubname1
   pubsubname2 = var.pubsubname2
   igwname = var.igwname
   igwcidr = var.igwcidr
   rtname = var.rtname
 }
-module "sg"{
+module "sg" {
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/sg?ref=master"
   vpc_id = module.vpc.vpc_id
   block1 = var.block1
@@ -24,17 +24,17 @@ module "ec2"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/ec2?ref=master"
   amiid = var.amiid
   intype = var.intype
-  security_group_id = module.sg.sg
+  security_group_id = module.sg.sg_id
   keypair = var.keypair
-  subnet_id = module.vpc.subnet
-  subnet_id = module.vpc.subnet1
+  subnet1_id = var.subnet1_id
+  subnet2_id = var.subnet2_id
 }
 module "elb"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/elb?ref=master"
   elbname = var.elbname
-  sg_id = var.sg_id
-  subnet_ids = var.subnet_ids
-  instance_ids = var.instance_ids
+  sg_id = module.sg.sg_id
+  subnet_ids = [module.vpc.subnet1_id, module.vpc.subnet2_id]
+  instance_ids = module.ec2.instance_ids
 }
 module "r53"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/r53?ref=master"

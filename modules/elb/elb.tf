@@ -23,6 +23,3 @@ resource "aws_elb" "babaji-elb" {
     Name = var.elbname
   }
 }
-output "elb" {
-  value = aws_elb.babaji-elb.dns_name
-}
