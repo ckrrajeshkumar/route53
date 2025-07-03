@@ -1,4 +1,4 @@
-output "vpc_id"{
+output "vpc"{
   value =  aws_vpc.babaji_vpc.id
 }
 output "subnet1_id" {
