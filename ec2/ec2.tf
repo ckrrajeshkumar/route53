@@ -4,7 +4,7 @@ resource "aws_instance" "babaji-web"{
   instance_type = var.intype
   vpc_security_group_ids = [var.security_group_id]
   subnet_id = var.subnet_id1
-  user_data =file("install_httpd.sh")
+  user_data = file("install_httpd.sh")
   tags = {
     Name = var.ec2name1
   }
@@ -15,7 +15,7 @@ resource "aws_instance" "babaji-web1"{
   instance_type = var.intype
   vpc_security_group_ids = [var.security_group_id]
   subnet_id = var.subnet_id2
-  user_data =file("install_httpd.sh")
+  user_data = file("install_httpd.sh")
   tags = {
     Name = var.ec2name2
   }
