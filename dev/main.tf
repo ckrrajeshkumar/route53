@@ -34,13 +34,14 @@ module "ec2"{
 module "elb"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//elb?ref=master"
   elbname = var.elbname
+  security_group_id = module.sg.sg_id
   sg_id = module.sg.sg_id
-  subnet_ids = [module.vpc.subnet1_id, module.vpc.subnet2_id]
+  subnet_id= [module.vpc.subnet1_id, module.vpc.subnet2_id]
   instance_ids = module.ec2.instance_ids
 }
 module "r53"{
   source = "git::https://github.com/ckrrajeshkumar/route53.git//r53?ref=master"
   domainname =var.domainname
-  elb_dns = module.elb.dns_name
+  elb_dns = module.elb.elb_dns_name
   elb_zone_id = var.elb_zone_id
 }
