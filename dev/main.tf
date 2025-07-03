@@ -15,6 +15,7 @@ module "vpc" {
 module "sg" {
   source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/sg?ref=master"
   vpc_id = module.vpc.vpc_id
+  vpc_id = module.vpc.
   block1 = var.block1
   block2 = var.block2
   block3 = var.block3
@@ -27,7 +28,7 @@ module "ec2"{
   security_group_id = module.sg.sg_id
   keypair = var.keypair
   subnet_id1 = module.vpc.subnet1_id
-  subnet_id2 = module.vpc.subnet2.id
+  subnet_id2 = module.vpc.subnet2_id
   ec2name1 = var.ec2name1
   ec2name2 = var.ec2name2
 }

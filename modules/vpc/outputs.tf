@@ -1,9 +1,9 @@
 output "vpc_id"{
-  value =  aws_vpc.babaji-vpc.id
+  value =  aws_vpc.babaji_vpc.id
 }
 output "subnet1_id" {
-  value = aws_subnet.babaji-pub1.id
+  value = aws_subnet.babaji_pub1.id
 }
 output "subnet2_id" {
-  value = aws_subnet.babaji-pub2.id
+  value = aws_subnet.babaji_pub2.id
 }
