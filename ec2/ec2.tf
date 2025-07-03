@@ -1,4 +1,4 @@
-resource "aws_instance" "babaji-web"{
+resource "aws_instance" "babaji_web"{
   ami = var.amiid
   key_name = var.keypair
   instance_type = var.intype
@@ -9,7 +9,7 @@ resource "aws_instance" "babaji-web"{
     Name = var.ec2name1
   }
 }
-resource "aws_instance" "babaji-web1"{
+resource "aws_instance" "babaji_web1"{
   ami = var.amiid
   key_name = var.keypair
   instance_type = var.intype
