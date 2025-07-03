@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/vpc?ref=master"
+  source = "git::https://github.com/ckrrajeshkumar/route53.git//vpc?ref=master"
   vpccidr = var.vpccidr
   vpcname = var.vpcname
   pubcidr1 = var.pubcidr1
@@ -13,7 +13,7 @@ module "vpc" {
   rtname = var.rtname
 }
 module "sg" {
-  source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/sg?ref=master"
+  source = "git::https://github.com/ckrrajeshkumar/route53.git//sg?ref=master"
   vpc_id = module.vpc.vpc1
   block1 = var.block1
   block2 = var.block2
@@ -21,7 +21,7 @@ module "sg" {
   sgname = var.sgname
 }
 module "ec2"{
-  source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/ec2?ref=master"
+  source = "git::https://github.com/ckrrajeshkumar/route53.git//ec2?ref=master"
   amiid = var.amiid
   intype = var.intype
   security_group_id = module.sg.sg_id
@@ -32,14 +32,14 @@ module "ec2"{
   ec2name2 = var.ec2name2
 }
 module "elb"{
-  source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/elb?ref=master"
+  source = "git::https://github.com/ckrrajeshkumar/route53.git//elb?ref=master"
   elbname = var.elbname
   sg_id = module.sg.sg_id
   subnet_ids = [module.vpc.subnet1_id, module.vpc.subnet2_id]
   instance_ids = module.ec2.instance_ids
 }
 module "r53"{
-  source = "git::https://github.com/ckrrajeshkumar/route53.git//modules/r53?ref=master"
+  source = "git::https://github.com/ckrrajeshkumar/route53.git//r53?ref=master"
   domainname =var.domainname
   elb_dns = module.elb.dns_name
   elb_zone_id = var.elb_zone_id
